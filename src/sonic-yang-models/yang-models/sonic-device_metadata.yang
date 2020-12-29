@@ -89,6 +89,12 @@ module sonic-device_metadata {
                         pattern "ToRRouter|LeafRouter|SpineChassisFrontendRouter|ChassisBackendRouter|ASIC";
                     }
                 }
+
+                leaf buffer_model {
+                    type string {
+                        pattern "dynamic|traditional";
+                    }
+                }
             }
             /* end of container localhost */
         }
