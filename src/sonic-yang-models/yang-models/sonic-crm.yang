@@ -293,6 +293,66 @@ module sonic-crm {
                     type threshold;
                 }
 
+                leaf dnat_entry_threshold_type {
+                    must "(((current()='PERCENTAGE' or current()='percentage') and
+                        ../dnat_entry_high_threshold<100 and
+                        ../dnat_entry_low_threshold<100) or
+                        (current()!='PERCENTAGE' and current()!='percentage'))";
+                    type stypes:crm_threshold_type;
+                }
+
+                leaf dnat_entry_high_threshold {
+                    must "(current() > ../dnat_entry_low_threshold)"
+                    {
+                        error-message "high_threshold should be more that low_threshold";
+                    }
+                    type threshold;
+                }
+
+                leaf dnat_entry_low_threshold {
+                    type threshold;
+                }
+
+                leaf snat_entry_threshold_type {
+                    must "(((current()='PERCENTAGE' or current()='percentage') and
+                        ../snat_entry_high_threshold<100 and
+                        ../snat_entry_low_threshold<100) or
+                        (current()!='PERCENTAGE' and current()!='percentage'))";
+                    type stypes:crm_threshold_type;
+                }
+
+                leaf snat_entry_high_threshold {
+                    must "(current() > ../snat_entry_low_threshold)"
+                    {
+                        error-message "high_threshold should be more that low_threshold";
+                    }
+                    type threshold;
+                }
+
+                leaf snat_entry_low_threshold {
+                    type threshold;
+                }
+
+                leaf ipmc_entry_threshold_type {
+                    must "(((current()='PERCENTAGE' or current()='percentage') and
+                        ../ipmc_entry_high_threshold<100 and
+                        ../ipmc_entry_low_threshold<100) or
+                        (current()!='PERCENTAGE' and current()!='percentage'))";
+                    type stypes:crm_threshold_type;
+                }
+
+                leaf ipmc_entry_high_threshold {
+                    must "(current() > ../ipmc_entry_low_threshold)"
+                    {
+                        error-message "high_threshold should be more that low_threshold";
+                    }
+                    type threshold;
+                }
+
+                leaf ipmc_entry_low_threshold {
+                    type threshold;
+                }
+
             }
             /* end of Config */
         }
