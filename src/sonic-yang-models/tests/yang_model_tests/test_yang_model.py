@@ -215,6 +215,26 @@ class Test_yang_models:
                     'value': 'disable'
                 }
             },
+            'DEVICE_METADATA_CORRECT_BUFFER_MODEL_PATTERN': {
+                'desc': 'DEVICE_METADATA correct value for BUFFER_MODEL field',
+                'eStr': self.defaultYANGFailure['Verify'],
+                'verify': {'xpath': '/sonic-device_metadata:sonic-device_metadata/DEVICE_METADATA/localhost/buffer_model',
+                    'key': 'sonic-device_metadata:buffer_model',
+                    'value': 'dynamic'
+                }
+            },
+            'DEVICE_METADATA_CORRECT_BUFFER_MODEL_PATTERN2': {
+                'desc': 'DEVICE_METADATA correct value for BUFFER_MODEL field',
+                'eStr': self.defaultYANGFailure['Verify'],
+                'verify': {'xpath': '/sonic-device_metadata:sonic-device_metadata/DEVICE_METADATA/localhost/buffer_model',
+                    'key': 'sonic-device_metadata:buffer_model',
+                    'value': 'traditional'
+                }
+            },
+            'DEVICE_METADATA_INCORRECT_BUFFER_MODEL_PATTERN': {
+                'desc': 'DEVICE_METADATA wrong value for BUFFER_MODEL field.',
+                'eStr': self.defaultYANGFailure['Pattern']
+            },
             'DEVICE_METADATA_TYPE_INCORRECT_PATTERN': {
                 'desc': 'DEVICE_METADATA_TYPE_INCORRECT_PATTERN pattern failure.',
                 'eStr': self.defaultYANGFailure['Pattern']

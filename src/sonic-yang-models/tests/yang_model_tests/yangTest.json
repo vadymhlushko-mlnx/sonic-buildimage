@@ -812,6 +812,48 @@
         }
     },
 
+    "DEVICE_METADATA_CORRECT_BUFFER_MODEL_PATTERN": {
+        "sonic-device_metadata:sonic-device_metadata": {
+            "sonic-device_metadata:DEVICE_METADATA": {
+                "sonic-device_metadata:localhost": {
+                "docker_routing_config_mode": "separated",
+                "platform": "x86_64-mlnx_msn4700-r0",
+                "hostname": "DUT-ASW",
+                "bgp_asn": "65000",
+                "buffer_model": "dynamic"
+                }
+            }
+        }
+    },
+
+    "DEVICE_METADATA_CORRECT_BUFFER_MODEL_PATTERN2": {
+        "sonic-device_metadata:sonic-device_metadata": {
+            "sonic-device_metadata:DEVICE_METADATA": {
+                "sonic-device_metadata:localhost": {
+                "docker_routing_config_mode": "separated",
+                "platform": "x86_64-mlnx_msn4700-r0",
+                "hostname": "DUT-ASW",
+                "bgp_asn": "65000",
+                "buffer_model": "traditional"
+                }
+            }
+        }
+    },
+
+    "DEVICE_METADATA_INCORRECT_BUFFER_MODEL_PATTERN": {
+        "sonic-device_metadata:sonic-device_metadata": {
+            "sonic-device_metadata:DEVICE_METADATA": {
+                "sonic-device_metadata:localhost": {
+                "docker_routing_config_mode": "separated",
+                "platform": "x86_64-mlnx_msn4700-r0",
+                "hostname": "DUT-ASW",
+                "bgp_asn": "65000",
+                "buffer_model": "separated"
+                }
+            }
+        }
+    },
+
     "VERSIONS_WITH_INCORRECT_PATTERN": {
         "sonic-versions:sonic-versions": {
             "sonic-versions:VERSIONS": {
@@ -1178,7 +1220,8 @@
 				"mac": "00:11:22:33:dd:5a",
 				"hostname": "asw.dc",
 				"bgp_asn": "64850",
-				"hwsku": "Stone"
+				"hwsku": "Stone",
+				"buffer_model": "dynamic"
 			}
 		},
 		"VLAN": {
