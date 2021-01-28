@@ -848,7 +848,7 @@
                 "platform": "x86_64-mlnx_msn4700-r0",
                 "hostname": "DUT-ASW",
                 "bgp_asn": "65000",
-                "buffer_model": "separated"
+                "buffer_model": "incorrect_pattern"
                 }
             }
         }
