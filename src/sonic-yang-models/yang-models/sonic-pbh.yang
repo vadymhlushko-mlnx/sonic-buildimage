@@ -159,7 +159,7 @@ module sonic-pbh {
 			}
 			/* end of PBH_RULE_LIST */
 		}
-		/* end of container ACL_RULE */
+		/* end of container PBH_RULE */
 
 		container PBH_TABLE {
 
