@@ -39,7 +39,7 @@ module sonic-pbh {
 				}
 
 				leaf hash_field {
-					description "Configures native hash filed for this hash";
+					description "Configures native hash field for this hash";
 					mandatory true;
 					type string {
 						pattern "INNER_IP_PROTOCOL|INNER_L4_DST_PORT|INNER_L4_SRC_PORT|INNER_DST_IPV4|INNER_SRC_IPV4|INNER_DST_IPV6|INNER_SRC_IPV6";
