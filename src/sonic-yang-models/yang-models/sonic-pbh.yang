@@ -174,22 +174,12 @@ module sonic-pbh {
 					type string;
 				}
 
-				leaf-list port_list {
-					description "Ports to which this table is applied";
+				leaf-list interface_list {
+					description "Interfaces to which this table is applied";
 					type union {
 						type leafref {
 							path "/port:sonic-port/port:PORT/port:PORT_LIST/port:name";
 						}
-						type string {
-							pattern "";
-						}
-					}
-					default "";
-				}
-
-				leaf-list lag_list {
-					description "Portchannels to which this table is applied";
-					type union {
 						type leafref {
 							path "/lag:sonic-portchannel/lag:PORTCHANNEL/lag:PORTCHANNEL_LIST/lag:name";
 						}
@@ -204,7 +194,7 @@ module sonic-pbh {
 					description "The description of this table";
 					mandatory true;
 					type string {
-						length 0..255;
+						length 1..255;
 					}
 				}
 
