@@ -1,6 +1,49 @@
 {
     "PBH_TABLE_RULE_HASH_VALID": {
         "sonic-pbh:sonic-pbh": {
+            "sonic-pbh:PBH_HASH_FIELD": {
+                "PBH_HASH_FIELD_LIST": [
+                    {
+                        "hash_field_name": "inner_ip_proto",
+                        "hash_field": "INNER_IP_PROTOCOL",
+                        "sequence_id": 1
+                    },
+                    {
+                        "hash_field_name": "inner_l4_dst_port",
+                        "hash_field": "INNER_L4_DST_PORT",
+                        "sequence_id": 2
+                    },
+                    {
+                        "hash_field_name": "inner_l4_src_port",
+                        "hash_field": "INNER_L4_SRC_PORT",
+                        "sequence_id": 2
+                    },
+                    {
+                        "hash_field_name": "inner_dst_ipv4",
+                        "hash_field": "INNER_DST_IPV4",
+                        "ip_mask": "255.0.0.0",
+                        "sequence_id": 3
+                    },
+                    {
+                        "hash_field_name": "inner_src_ipv4",
+                        "hash_field": "INNER_SRC_IPV4",
+                        "ip_mask": "0.0.0.255",
+                        "sequence_id": 3
+                    },
+                    {
+                        "hash_field_name": "inner_dst_ipv6",
+                        "hash_field": "INNER_DST_IPV6",
+                        "ip_mask": "ffff::",
+                        "sequence_id": 4
+                    },
+                    {
+                        "hash_field_name": "inner_src_ipv6",
+                        "hash_field": "INNER_SRC_IPV6",
+                        "ip_mask": "::ffff",
+                        "sequence_id": 4
+                    }
+                ]
+            },
             "sonic-pbh:PBH_HASH": {
                 "PBH_HASH_LIST": [
                     {
@@ -25,49 +68,6 @@
                     }
                 ]
             },
-            "sonic-pbh:PBH_HASH_FIELD": {
-                "PBH_HASH_FIELD_LIST": [
-                    {
-                        "hash_name": "inner_ip_proto",
-                        "hash_field": "INNER_IP_PROTOCOL",
-                        "sequence_id": 1
-                    },
-                    {
-                        "hash_name": "inner_l4_dst_port",
-                        "hash_field": "INNER_L4_DST_PORT",
-                        "sequence_id": 2
-                    },
-                    {
-                        "hash_name": "inner_l4_src_port",
-                        "hash_field": "INNER_L4_SRC_PORT",
-                        "sequence_id": 2
-                    },
-                    {
-                        "hash_name": "inner_dst_ipv4",
-                        "hash_field": "INNER_DST_IPV4",
-                        "ip_mask": "255.0.0.0",
-                        "sequence_id": 3
-                    },
-                    {
-                        "hash_name": "inner_src_ipv4",
-                        "hash_field": "INNER_SRC_IPV4",
-                        "ip_mask": "0.0.0.255",
-                        "sequence_id": 3
-                    },
-                    {
-                        "hash_name": "inner_dst_ipv6",
-                        "hash_field": "INNER_DST_IPV6",
-                        "ip_mask": "ffff::",
-                        "sequence_id": 4
-                    },
-                    {
-                        "hash_name": "inner_src_ipv6",
-                        "hash_field": "INNER_SRC_IPV6",
-                        "ip_mask": "::ffff",
-                        "sequence_id": 4
-                    }
-                ]
-            },
             "sonic-pbh:PBH_RULE": {
                 "PBH_RULE_LIST": [
                     {
@@ -76,9 +76,7 @@
                         "priority": 1,
                         "gre_key": "0x2500/0xffffff00",
                         "inner_ether_type": "0x86dd/0xffff",
-                        "hash": [
-                            "hash_v6"
-                        ],
+                        "hash": "hash_v6",
                         "packet_action": "SET_ECMP_HASH"
                     },
                     {
@@ -88,9 +86,7 @@
                         "ip_protocol": "0x11/0xff",
                         "l4_dst_port": "0x12b5/0xffff",
                         "inner_ether_type": "0x0800/0xffff",
-                        "hash": [
-                            "hash_v4"
-                        ],
+                        "hash": "hash_v4",
                         "packet_action": "SET_LAG_HASH"
                     }
                 ]
@@ -184,7 +180,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -196,9 +192,7 @@
                         "table_name": "invalid_value",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             }
@@ -219,7 +213,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -231,9 +225,7 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 4294967296,
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -262,7 +254,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -275,9 +267,7 @@
                         "rule_name": "nvgre",
                         "priority": 1,
                         "gre_key": "2500/0xffffff00",
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -306,7 +296,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -319,9 +309,7 @@
                         "rule_name": "nvgre",
                         "priority": 1,
                         "ip_protocol": "0x11/ff",
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -350,7 +338,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -363,9 +351,7 @@
                         "rule_name": "nvgre",
                         "priority": 1,
                         "ipv6_next_header": "0x11",
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -394,7 +380,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -407,9 +393,7 @@
                         "rule_name": "nvgre",
                         "priority": 1,
                         "l4_dst_port": "0xffff",
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -438,7 +422,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -451,9 +435,7 @@
                         "rule_name": "nvgre",
                         "priority": 1,
                         "inner_ether_type": "0x0800 / 0xffff",
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -475,9 +457,7 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "invalid_value"
-                        ]
+                        "hash": "invalid_value"
                     }
                 ]
             },
@@ -506,7 +486,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -518,9 +498,7 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "hash_default"
-                        ],
+                        "hash": "hash_default",
                         "packet_action": "INVALID_VALUE"
                     }
                 ]
@@ -550,7 +528,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -562,9 +540,7 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "hash_default"
-                        ],
+                        "hash": "hash_default",
                         "flow_counter": "INVALID_VALUE"
                     }
                 ]
@@ -594,7 +570,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -606,9 +582,8 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default",
+                        "packet_action": "SET_ECMP_HASH"
                     }
                 ]
             },
@@ -616,6 +591,10 @@
                 "PBH_TABLE_LIST": [
                     {
                         "table_name": "pbh_table",
+                        "interface_list": [
+                            "Ethernet0",
+                            "Ethernet4"
+                        ],
                         "description": "NVGRE"
                     }
                 ]
@@ -637,7 +616,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 1
                     }
@@ -649,9 +628,7 @@
                         "table_name": "pbh_table",
                         "rule_name": "nvgre",
                         "priority": 1,
-                        "hash": [
-                            "hash_default"
-                        ]
+                        "hash": "hash_default"
                     }
                 ]
             },
@@ -680,7 +657,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INVALID_VALUE",
                         "sequence_id": 1
                     }
@@ -703,7 +680,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_DST_IPV4",
                         "ip_mask": "ffff::",
                         "sequence_id": 1
@@ -727,7 +704,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_DST_IPV4",
                         "ip_mask": "ffff::",
                         "sequence_id": 1
@@ -751,7 +728,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_DST_IPV6",
                         "ip_mask": "255.0.0.0",
                         "sequence_id": 1
@@ -775,7 +752,7 @@
             "sonic-pbh:PBH_HASH_FIELD": {
                 "PBH_HASH_FIELD_LIST": [
                     {
-                        "hash_name": "inner_ip_proto",
+                        "hash_field_name": "inner_ip_proto",
                         "hash_field": "INNER_IP_PROTOCOL",
                         "sequence_id": 4294967296
                     }

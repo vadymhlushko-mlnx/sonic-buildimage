@@ -44,45 +44,15 @@
     },
     "PBH_RULE_INVALID_PACKET_ACTION": {
         "desc": "Configure invalid PACKET_ACTION in PBH_RULE.",
-        "eStrKey" : "Pattern"
+        "eStrKey" : "InvalidValue"
     },
     "PBH_RULE_INVALID_FLOW_COUNTER": {
         "desc": "Configure invalid FLOW_COUNTER in PBH_RULE.",
-        "eStrKey" : "Pattern"
-    },
-    "PBH_RULE_DEFAULT_VALUE_PACKET_ACTION": {
-        "desc": "Verify default value for PACKET_ACTION field in PBH_RULE.",
-        "eStrKey" : "Verify",
-        "verify": {
-            "xpath": "/sonic-pbh:sonic-pbh/PBH_RULE/PBH_RULE_LIST[table_name='pbh_table'][rule_name='nvgre']/packet_action",
-            "key": "sonic-pbh:packet_action",
-            "value": "SET_ECMP_HASH"
-        }
-    },
-    "PBH_RULE_DEFAULT_VALUE_FLOW_COUNTER": {
-        "desc": "Verify default value for FLOW_COUNTER field in PBH_RULE.",
-        "eStrKey" : "Verify",
-        "verify": {
-            "xpath": "/sonic-pbh:sonic-pbh/PBH_RULE/PBH_RULE_LIST[table_name='pbh_table'][rule_name='nvgre']/flow_counter",
-            "key": "sonic-pbh:flow_counter",
-            "value": "DISABLED"
-        }
+        "eStrKey" : "InvalidValue"
     },
     "PBH_HASH_INVALID_HASH_FIELD": {
         "desc": "Configure invalid HASH_FIELD in PBH_HASH.",
-        "eStrKey" : "Pattern"
-    },
-    "PBH_RULE_HASH_FIELD_IPV6_MASK_MISMATCH": {
-        "desc": "Configure HASH_FIELD (INNER_DST_IPV4) with IPV6_MASK in PBH_HASH.",
-        "eStrKey" : "When"
-    },
-    "PBH_RULE_INVALID_IPV4_MASK": {
-        "desc": "Configure invalid IPV4_MASK in PBH_HASH.",
-        "eStrKey" : "Pattern"
-    },
-    "PBH_RULE_INVALID_IPV6_MASK": {
-        "desc": "Configure invalid IPV6_MASK in PBH_HASH.",
-        "eStrKey" : "Pattern"
+        "eStrKey" : "InvalidValue"
     },
     "PBH_RULE_INVALID_SEQUENCE_ID": {
         "desc": "Configure invalid SEQUENCE_ID in PBH_HASH.",
