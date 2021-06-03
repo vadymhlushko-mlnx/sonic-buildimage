@@ -544,6 +544,26 @@
             }
         },
         "PBH_HASH": {
+            "hash_v4": {
+                "hash_field_list": [
+                    "inner_ip_proto",
+                    "inner_l4_dst_port",
+                    "inner_l4_src_port",
+                    "inner_dst_ipv4",
+                    "inner_src_ipv4"
+                ]
+            },
+            "hash_v6": {
+                "hash_field_list": [
+                    "inner_ip_proto",
+                    "inner_l4_dst_port",
+                    "inner_l4_src_port",
+                    "inner_dst_ipv6",
+                    "inner_src_ipv6"
+                ]
+            }
+        },
+        "PBH_HASH_FIELD": {
             "inner_ip_proto": {
                 "hash_field": "INNER_IP_PROTOCOL",
                 "sequence_id": "1"
@@ -558,22 +578,22 @@
             },
             "inner_dst_ipv4": {
                 "hash_field": "INNER_DST_IPV4",
-                "ipv4_mask": "255.0.0.0",
+                "ip_mask": "255.0.0.0",
                 "sequence_id": "3"
             },
             "inner_src_ipv4": {
                 "hash_field": "INNER_SRC_IPV4",
-                "ipv4_mask": "0.0.0.255",
+                "ip_mask": "0.0.0.255",
                 "sequence_id": "3"
             },
             "inner_dst_ipv6": {
                 "hash_field": "INNER_DST_IPV6",
-                "ipv6_mask": "ffff::",
+                "ip_mask": "ffff::",
                 "sequence_id": "4"
             },
             "inner_src_ipv6": {
                 "hash_field": "INNER_SRC_IPV6",
-                "ipv6_mask": "::ffff",
+                "ip_mask": "::ffff",
                 "sequence_id": "4"
             }
         },
@@ -582,12 +602,8 @@
                 "priority": "1",
                 "gre_key": "0x2500/0xffffff00",
                 "inner_ether_type": "0x86dd/0xffff",
-                "hash_list": [
-                    "inner_ip_proto",
-                    "inner_l4_dst_port",
-                    "inner_l4_src_port",
-                    "inner_dst_ipv6",
-                    "inner_src_ipv6"
+                "hash": [
+                    "hash_v6"
                 ],
                 "packet_action": "SET_ECMP_HASH"
             },
@@ -596,12 +612,8 @@
                 "ip_protocol": "0x11/0xff",
                 "l4_dst_port": "0x12b5/0xffff",
                 "inner_ether_type": "0x0800/0xffff",
-                "hash_list": [
-                    "inner_ip_proto",
-                    "inner_l4_dst_port",
-                    "inner_l4_src_port",
-                    "inner_dst_ipv4",
-                    "inner_src_ipv4"
+                "hash": [
+                    "hash_v4"
                 ],
                 "packet_action": "SET_LAG_HASH"
             }
