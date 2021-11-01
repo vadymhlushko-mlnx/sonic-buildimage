@@ -1275,6 +1275,19 @@
 	          "pfc_to_pg_map"   : "pfc_prio_to_pg_map2",
 	          "pfc_enable"      : "3,4"
             }
+        },
+
+        "NVGRE_TUNNEL": {
+            "tunnel_1": {
+                "src_ip": "10.0.0.1"
+            }
+        },
+
+        "NVGRE_TUNNEL_MAP": {
+            "tunnel_1|Vlan111": {
+                "vlan_id": "111",
+                "vsid": "5000"
+            }
         }
     },
 
