@@ -116,7 +116,7 @@
                         "tunnel_name": "tunnel_1",
                         "vlan_name": "Vlan200",
                         "vlan_id": 200,
-                        "vsid": 1
+                        "vsid": 999999999
                     }
                 ]
             }
