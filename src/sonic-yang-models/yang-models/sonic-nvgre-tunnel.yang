@@ -42,7 +42,7 @@ module sonic-nvgre-tunnel {
                     description "Source IP address";
 
                     mandatory true;
-                    type inet:ipv4-address;
+                    type inet:ip-address;
                 }
 
             }
