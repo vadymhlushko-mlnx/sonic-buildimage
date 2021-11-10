@@ -5,7 +5,7 @@
 
     "NVGRE_TUNNEL_INVALID_SRC_IP": {
         "desc": "INVALID src_ip value for NVGRE_TUNNEL",
-        "eStrKey": "Pattern"
+        "eStrKey": "InvalidValue"
     },
 
     "NVGRE_TUNNEL_MAP_UNEXISTING_NVGRE_TUNNEL_NAME": {
