@@ -129,7 +129,7 @@ INCLUDE_ICCPD = n
 INCLUDE_SFLOW = y
 
 # ENABLE_SFLOW_DROPMON - support of drop packets monitoring feature for sFlow deamon
-ENABLE_SFLOW_DROPMON = y
+ENABLE_SFLOW_DROPMON = n
 
 # INCLUDE_MGMT_FRAMEWORK - build docker-sonic-mgmt-framework for CLI and REST server support
 INCLUDE_MGMT_FRAMEWORK = y
