@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2016-2021 NVIDIA CORPORATION & AFFILIATES.
+# Copyright (c) 2016-2023 NVIDIA CORPORATION & AFFILIATES.
 # Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,5 +78,14 @@ $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	# fix timestamp because we do not actually build tools, only kernel
 	touch $(MFT_NAME)/DEBS/*.deb
 	mv $(MFT_NAME)/DEBS/*.deb $(DEST)
+
+	FWTRACE_CFG = ./fwtrace_cfg
+	MFT_CFG = /etc/mft/fwtrace_cfg
+
+	if [ ! -d $(MFT_CFG) ]; then \
+		mkdir -p $(MFT_CFG); \
+	fi
+
+	cp $(FWTRACE_CFG)/* $(MFT_CFG)
 
 $(addprefix $(DEST)/, $(DERIVED_TARGETS)): $(DEST)/% : $(DEST)/$(MAIN_TARGET)
