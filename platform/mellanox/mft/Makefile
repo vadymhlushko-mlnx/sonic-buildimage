@@ -42,6 +42,9 @@ DERIVED_TARGETS = $(MOD_DEB) mft-oem_$(MFT_VERSION)-$(MFT_REVISION)_$(CONFIGURED
 DKMS_BMDEB = /var/lib/dkms/kernel-mft-dkms/$(MFT_VERSION)/bmdeb
 DKMS_TMP := $(shell mktemp -u -d -t dkms.XXXXXXXXXX)
 
+FWTRACE_CFG = ./fwtrace_cfg
+MFT_CFG = /etc/mft/fwtrace_cfg
+
 $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	rm -rf $(MFT_NAME)
 	wget -O $(MFT_TGZ) $(MFT_TGZ_URL)
@@ -79,13 +82,10 @@ $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	touch $(MFT_NAME)/DEBS/*.deb
 	mv $(MFT_NAME)/DEBS/*.deb $(DEST)
 
-	FWTRACE_CFG = ./fwtrace_cfg
-	MFT_CFG = /etc/mft/fwtrace_cfg
-
 	if [ ! -d $(MFT_CFG) ]; then \
-		mkdir -p $(MFT_CFG); \
+		sudo mkdir -p $(MFT_CFG); \
 	fi
 
-	cp $(FWTRACE_CFG)/* $(MFT_CFG)
+	sudo cp $(FWTRACE_CFG)/* $(MFT_CFG)
 
 $(addprefix $(DEST)/, $(DERIVED_TARGETS)): $(DEST)/% : $(DEST)/$(MAIN_TARGET)
