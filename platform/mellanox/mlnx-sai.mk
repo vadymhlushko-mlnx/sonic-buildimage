@@ -6,7 +6,7 @@ MLNX_SAI_ASSETS_RELEASE_TAG = sai-$(MLNX_SAI_VERSION)-$(BLDENV)-$(CONFIGURED_ARC
 MLNX_SAI_ASSETS_URL = $(MLNX_ASSETS_GITHUB_URL)/releases/download/$(MLNX_SAI_ASSETS_RELEASE_TAG)
 MLNX_SAI_DEB_VERSION = $(subst -,.,$(subst _,.,$(MLNX_SAI_VERSION)))
 
-# Place here URL where SDK sources exist
+# Place here URL where SAI sources exist
 MLNX_SAI_SOURCE_BASE_URL = 
 
 ifneq ($(MLNX_SAI_SOURCE_BASE_URL), )
