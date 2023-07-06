@@ -28,6 +28,17 @@ function SafePwrCycle() {
 
 ParseArguments "$@"
 
+# Reboot immediately if the kdump capture kernel is running
+VMCORE_FILE=/proc/vmcore
+if [ -e $VMCORE_FILE -a -s $VMCORE_FILE ]; then
+    sync ; sync
+    umount -fa > /dev/null 2&>1
+
+    # Run Debian reboot because the platform reboot isn't available
+    /sbin/reboot
+fi
+
+
 ${FW_UPGRADE_SCRIPT} --upgrade --verbose
 EXIT_CODE="$?"
 if [[ "${EXIT_CODE}" != "${EXIT_SUCCESS}" ]]; then
