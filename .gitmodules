@@ -4,7 +4,7 @@
 	branch = 202211
 [submodule "sonic-linux-kernel"]
 	path = src/sonic-linux-kernel
-	url = https://github.com/sonic-net/sonic-linux-kernel
+	url = https://github.com/keboliu/sonic-linux-kernel
 	branch = 202211
 [submodule "sonic-sairedis"]
 	path = src/sonic-sairedis
@@ -34,7 +34,7 @@
 	url = https://github.com/p4lang/ptf.git
 [submodule "src/sonic-utilities"]
 	path = src/sonic-utilities
-	url = https://github.com/sonic-net/sonic-utilities
+	url = https://github.com/keboliu/sonic-utilities
 	branch = 202211
 [submodule "platform/broadcom/sonic-platform-modules-arista"]
 	path = platform/broadcom/sonic-platform-modules-arista
@@ -45,7 +45,7 @@
 	branch = 202211
 [submodule "src/sonic-platform-daemons"]
 	path = src/sonic-platform-daemons
-	url = https://github.com/sonic-net/sonic-platform-daemons
+	url = https://github.com/keboliu/sonic-platform-daemons
 	branch = 202211
 [submodule "src/sonic-platform-pde"]
 	path = src/sonic-platform-pde
