@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2016-2021 NVIDIA CORPORATION & AFFILIATES.
+# Copyright (c) 2016-2023 NVIDIA CORPORATION & AFFILIATES.
 # Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,6 +42,9 @@ DERIVED_TARGETS = $(MOD_DEB) mft-oem_$(MFT_VERSION)-$(MFT_REVISION)_$(CONFIGURED
 DKMS_BMDEB = /var/lib/dkms/kernel-mft-dkms/$(MFT_VERSION)/bmdeb
 DKMS_TMP := $(shell mktemp -u -d -t dkms.XXXXXXXXXX)
 
+FWTRACE_CFG = ./fwtrace_cfg
+SONIC_MFT_FWTRACE_CFG = /etc/sonic/mft/fwtrace_cfg
+
 $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	rm -rf $(MFT_NAME)
 	wget -O $(MFT_TGZ) $(MFT_TGZ_URL)
@@ -78,5 +81,11 @@ $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	# fix timestamp because we do not actually build tools, only kernel
 	touch $(MFT_NAME)/DEBS/*.deb
 	mv $(MFT_NAME)/DEBS/*.deb $(DEST)
+
+	if [ ! -d $(SONIC_MFT_FWTRACE_CFG) ]; then \
+		sudo mkdir -p $(SONIC_MFT_FWTRACE_CFG); \
+	fi
+
+	sudo cp $(FWTRACE_CFG)/* $(SONIC_MFT_FWTRACE_CFG)
 
 $(addprefix $(DEST)/, $(DERIVED_TARGETS)): $(DEST)/% : $(DEST)/$(MAIN_TARGET)
