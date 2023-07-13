@@ -43,7 +43,7 @@ DKMS_BMDEB = /var/lib/dkms/kernel-mft-dkms/$(MFT_VERSION)/bmdeb
 DKMS_TMP := $(shell mktemp -u -d -t dkms.XXXXXXXXXX)
 
 FWTRACE_CFG = ./fwtrace_cfg
-MFT_CFG = /etc/mft/fwtrace_cfg
+SONIC_MFT_FWTRACE_CFG = /etc/sonic/mft/fwtrace_cfg
 
 $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	rm -rf $(MFT_NAME)
@@ -82,10 +82,10 @@ $(addprefix $(DEST)/, $(MAIN_TARGET)): $(DEST)/% :
 	touch $(MFT_NAME)/DEBS/*.deb
 	mv $(MFT_NAME)/DEBS/*.deb $(DEST)
 
-	if [ ! -d $(MFT_CFG) ]; then \
-		sudo mkdir -p $(MFT_CFG); \
+	if [ ! -d $(SONIC_MFT_FWTRACE_CFG) ]; then \
+		sudo mkdir -p $(SONIC_MFT_FWTRACE_CFG); \
 	fi
 
-	sudo cp $(FWTRACE_CFG)/* $(MFT_CFG)
+	sudo cp $(FWTRACE_CFG)/* $(SONIC_MFT_FWTRACE_CFG)
 
 $(addprefix $(DEST)/, $(DERIVED_TARGETS)): $(DEST)/% : $(DEST)/$(MAIN_TARGET)
