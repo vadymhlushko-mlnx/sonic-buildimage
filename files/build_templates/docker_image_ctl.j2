@@ -442,6 +442,12 @@ start() {
         fi
     fi
 
+    # Insert "create_all_available_buffers" attribute
+    HWSKU_FOLDER="/usr/share/sonic/device/$PLATFORM/$HWSKU"
+    if [ -f "$HWSKU_FOLDER" ]; then
+        $SONIC_CFGGEN -j $HWSKU_FOLDER/create_all_available_buffers.json --write-to-db
+    fi
+
     {%- if enable_asan == "y" %}
     mkdir -p /var/log/asan
     {%- endif %}
