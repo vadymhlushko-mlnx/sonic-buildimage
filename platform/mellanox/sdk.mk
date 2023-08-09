@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2016-2022 NVIDIA CORPORATION & AFFILIATES.
+# Copyright (c) 2016-2023 NVIDIA CORPORATION & AFFILIATES.
 # Apache-2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,17 +36,17 @@ export MLNX_SDK_SOURCE_BASE_URL MLNX_SDK_VERSION MLNX_SDK_ISSU_VERSION MLNX_SDK_
 
 MLNX_SDK_RDEBS += $(APPLIBS) $(SX_COMPLIB) $(SX_EXAMPLES) \
                   $(SX_GEN_UTILS) $(SX_SCEW) $(SXD_LIBS) $(WJH_LIBS) $(SX_ACL_HELPER) \
-                  $(SX_HASH_CALC)
+                  $(SX_HASH_CALC) $(SX_OBJ_DESC_LIB)
 
 MLNX_SDK_DEBS += $(APPLIBS_DEV) $(SX_COMPLIB_DEV) \
                  $(SX_COMPLIB_DEV_STATIC) $(SX_EXAMPLES_DEV) $(SX_GEN_UTILS_DEV) \
                  $(SX_SCEW_DEV) $(SX_SCEW_DEV_STATIC) $(SXD_LIBS_DEV)\
-                 $(SXD_LIBS_DEV_STATIC) $(WJH_LIBS_DEV) $(SX_ACL_HELPER_DEV) $(SX_HASH_CALC)
+                 $(SXD_LIBS_DEV_STATIC) $(WJH_LIBS_DEV) $(SX_ACL_HELPER_DEV) $(SX_HASH_CALC) $(SX_OBJ_DESC_LIB_DEV)
 
 MLNX_SDK_DBG_DEBS += $(APPLIBS_DBGSYM) $(SX_COMPLIB_DBGSYM) \
          $(SX_EXAMPLES_DBGSYM) $(SX_GEN_UTILS_DBGSYM) $(SX_SCEW_DBGSYM) \
          $(SXD_LIBS_DBGSYM) $(WJH_LIBS_DBGSYM) $(SX_ACL_HELPER_DBGSYM) \
-         $(SX_HASH_CALC_DBGSYM)
+         $(SX_HASH_CALC_DBGSYM) $(SX_OBJ_DESC_LIB_DBGSYM)
 
 APPLIBS = applibs_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
 $(APPLIBS)_SRC_PATH = $(PLATFORM_PATH)/sdk-src/applibs
@@ -128,6 +128,17 @@ $(eval $(call add_derived_package,$(SX_ACL_HELPER),$(SX_ACL_HELPER_DEV)))
 SX_ACL_HELPER_DBGSYM = sx-acl-helper-dbgsym_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
 ifeq ($(SDK_FROM_SRC),y)
 $(eval $(call add_derived_package,$(SX_ACL_HELPER),$(SX_ACL_HELPER_DBGSYM)))
+endif
+
+SX_OBJ_DESC_LIB = sx-obj-desc-lib_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
+$(SX_OBJ_DESC_LIB)_SRC_PATH = $(PLATFORM_PATH)/sdk-src/sx-obj-desc-lib
+$(SX_OBJ_DESC_LIB)_DEPENDS += $(APPLIBS_DEV) $(SX_COMPLIB_DEV) $(SXD_LIBS_DEV)
+$(SX_OBJ_DESC_LIB)_RDEPENDS += $(APPLIBS) $(SX_COMPLIB) $(PYTHON_SDK_API)
+SX_OBJ_DESC_LIB_DEV = sx-obj-desc-lib-dev_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
+$(eval $(call add_derived_package,$(SX_OBJ_DESC_LIB),$(SX_OBJ_DESC_LIB_DEV)))
+SX_OBJ_DESC_LIB_DBGSYM = sx-obj-desc-lib-dbgsym_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
+ifeq ($(SDK_FROM_SRC),y)
+$(eval $(call add_derived_package,$(SX_OBJ_DESC_LIB),$(SX_OBJ_DESC_LIB_DBGSYM)))
 endif
 
 WJH_LIBS = wjh-libs_1.mlnx.$(MLNX_SDK_DEB_VERSION)_$(CONFIGURED_ARCH).deb
